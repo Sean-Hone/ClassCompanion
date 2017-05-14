@@ -1,6 +1,7 @@
 package student.seanm.classcompanion;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -41,7 +42,10 @@ public class ClassItemAdapter extends BaseAdapter {
         TextView itemView;
         if(convertView == null){
             itemView = new TextView(adapterContext);
-            itemView.setLayoutParams(new GridView.LayoutParams(120, 120));
+            ViewGroup.LayoutParams layoutParams = new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            itemView.setLayoutParams(layoutParams);
+            itemView.setPadding(15,50,15,50);
+            itemView.setGravity(Gravity.CENTER);
         }
         else itemView = (TextView) convertView;
 
