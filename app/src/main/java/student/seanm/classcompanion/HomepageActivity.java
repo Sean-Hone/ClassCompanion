@@ -10,6 +10,4 @@ public class HomepageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
     }
-
-    //commit test
 }
