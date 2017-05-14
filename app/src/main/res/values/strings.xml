@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Class Companion</string>
+    <string name="Grid_00">COMP261</string>
+    <string name="Grid_10">NWEN241</string>
+    <string name="Grid_01">SWEN221</string>
+    <string name="Grid_11">SWEN223</string>
 </resources>
