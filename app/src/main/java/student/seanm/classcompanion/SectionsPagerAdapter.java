@@ -18,14 +18,17 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter{
 
     @Override
     public Fragment getItem(int position){
+        //returns the fragment realting to the current tab based on position
         return WeightingFragment.newInstance();
     }
 
+    //only 3 tabs
     @Override
     public int getCount(){
         return 3;
     }
 
+    //returns the name of the current tab based on position
     @Override
     public String getPageTitle(int position) {
         switch (position) {
