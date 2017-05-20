@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 
 public class ClassInfoActivity extends AppCompatActivity {
 
@@ -17,10 +18,13 @@ public class ClassInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_info);
 
+        Toolbar tBar = (Toolbar) findViewById(R.id.classInfo_toolBar);
+        setSupportActionBar(tBar);
+
         //retrieves the class name and sets that as the title
         Intent intent = getIntent();
         courseName = intent.getStringExtra("Class");
-        this.setTitle(courseName);
+        getSupportActionBar().setTitle(courseName);
 
         //adapter that deals with having multiple fragments or tabs
         sectionPageAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
