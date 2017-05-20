@@ -5,7 +5,7 @@ through course. I am using this app as a way of solidifying my own research into
 
 So far I have implemented: 
 
-The project has been created and set up with github along with an empty homepage activity
+Project has a home page with grid view of mock courses. Clicking an item takes you into that classes information screen. The class name is the changed to the title and you can swipe through or select each tab. At this point each tab is an empty weighting fragment.
   
 In the future I wish to implement:
 
