@@ -2,6 +2,7 @@ package student.seanm.classcompanion;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -45,5 +46,15 @@ public class ClassInfoActivity extends AppCompatActivity {
         //links the view pager to the tab layout
         TabLayout tabs = (TabLayout) findViewById(R.id.classInfo_tabs);
         tabs.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.classInfo_drawerLayout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 }
