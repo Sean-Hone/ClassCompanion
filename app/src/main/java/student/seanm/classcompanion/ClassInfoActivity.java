@@ -1,6 +1,7 @@
 package student.seanm.classcompanion;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+//implements OnNavigationItemSelectedListener to put method
 public class ClassInfoActivity extends AppCompatActivity {
 
     private String courseName;
@@ -49,9 +51,17 @@ public class ClassInfoActivity extends AppCompatActivity {
         TabLayout tabs = (TabLayout) findViewById(R.id.classInfo_tabs);
         tabs.setupWithViewPager(viewPager);
 
+        //get references to the navigation view and its menu object
         navView = (NavigationView) findViewById(R.id.classInfo_navMenu);
         navMenu = navView.getMenu();
 
+        //create the listener for when a nav view item is clicked
+        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                return menuItemPressed(item);
+            }
+        });
 
         //retrieves the class name and sets that as the name to be passed during population
         Intent intent = getIntent();
@@ -60,6 +70,29 @@ public class ClassInfoActivity extends AppCompatActivity {
         populateClassInfo(name);
     }
 
+    public boolean menuItemPressed(MenuItem item){
+        //Repopulates parts of activity with the new class that was selected
+        String title = item.getTitle().toString();
+        populateClassInfo(title);
+
+        //closes the navigation menu after repopulating activity
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.classInfo_drawerLayout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        //makes it so that pressing the back button closes the nav menu rather than returning to parent activity
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.classInfo_drawerLayout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    //fills in class info activity with information specific to activity
     public void populateClassInfo(String name){
 
         //sets the title of the action bar to be the name of the class
@@ -85,14 +118,6 @@ public class ClassInfoActivity extends AppCompatActivity {
             menuPos++;
         }
     }
-    @Override
-    public void onBackPressed() {
-        //makes it so that pressing the back button closes the nav menu rather than returning to parent activity
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.classInfo_drawerLayout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+
+
 }
