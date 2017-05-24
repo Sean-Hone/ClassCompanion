@@ -3,19 +3,18 @@
     <item android:title="Other Classes">
         <menu>
             <item
-                android:title="@string/Grid_00">
+                android:id="@+id/navItem1"
+                android:title="1">
             </item>
 
             <item
-                android:title="@string/Grid_01">
+                android:id="@+id/navItem2"
+                android:title="2">
             </item>
 
             <item
-                android:title="@string/Grid_10">
-            </item>
-
-            <item
-                android:title="@string/Grid_11">
+                android:id="@+id/navItem3"
+                android:title="3">
             </item>
         </menu>
     </item>

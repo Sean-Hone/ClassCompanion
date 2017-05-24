@@ -1,9 +1,13 @@
 <resources>
+
     <string name="app_name">Class Companion</string>
-    <string name="Grid_00">COMP261</string>
-    <string name="Grid_10">NWEN241</string>
-    <string name="Grid_01">SWEN221</string>
-    <string name="Grid_11">SWEN223</string>
+
+    <string-array name="classes">
+        <item>COMP261</item>
+        <item>NWEN241</item>
+        <item>SWEN221</item>
+        <item>SWEN223</item>
+    </string-array>
 
     <string name="Nav_Drawer_Open">Open Navigation Menu</string>
     <string name="Nav_Drawer_Close">Close Navigation Menu</string>

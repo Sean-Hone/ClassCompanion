@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import java.util.List;
+
 /**
  * Created by seanm on 14/05/2017.
  */
@@ -15,15 +17,19 @@ import android.widget.TextView;
 public class ClassItemAdapter extends BaseAdapter {
 
     private Context adapterContext;
-    private int[] itemNames;
+    private String[] itemNames;
 
     public ClassItemAdapter(Context c){
         adapterContext = c;
-        itemNames = new int[4]; //list of all class names
-        itemNames[0] = R.string.Grid_00; //string is has grid position in refeence name
+
+        //array of all class names
+        itemNames = adapterContext.getResources().getStringArray(R.array.classes);
+
+        /*itemNames = new int[4]; //list of all class names
+        itemNames[0] = R.string.Grid_00; //string is has grid position in reference name
         itemNames[1] = R.string.Grid_10;
         itemNames[2] = R.string.Grid_01;
-        itemNames[3] = R.string.Grid_11;
+        itemNames[3] = R.string.Grid_11;*/
     }
 
     //returns the amount of classes in the program
@@ -33,12 +39,12 @@ public class ClassItemAdapter extends BaseAdapter {
 
     //returns the object at given position
     public Object getItem(int position){
-        return adapterContext.getString(itemNames[position]);
+        return itemNames[position];
     }
 
-    //returns id of item at given position
+    //returns position as id of text is not needed
     public long getItemId(int position){
-        return itemNames[position];
+        return position;
     }
 
     //Makes and returns the view at the given position
@@ -58,7 +64,7 @@ public class ClassItemAdapter extends BaseAdapter {
         }
         else itemView = (TextView) convertView;
 
-        itemView.setText(adapterContext.getString(itemNames[position]));
+        itemView.setText(itemNames[position]);
         return itemView;
     }
 }
