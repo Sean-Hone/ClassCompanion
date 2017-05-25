@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,7 +20,7 @@ import android.widget.TextView;
 //implements OnNavigationItemSelectedListener to put method
 public class ClassInfoActivity extends AppCompatActivity {
 
-    private String courseName;
+    public static String courseName;
     private SectionsPagerAdapter sectionPageAdapter;
     private ViewPager viewPager;
     private NavigationView navView;
@@ -29,6 +30,10 @@ public class ClassInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_info);
+
+        //retrieves the class name and sets that as the name to be passed during population
+        Intent intent = getIntent();
+        courseName = intent.getStringExtra("Class");
 
         Toolbar tBar = (Toolbar) findViewById(R.id.classInfo_toolBar);
         setSupportActionBar(tBar);
@@ -63,21 +68,22 @@ public class ClassInfoActivity extends AppCompatActivity {
             }
         });
 
-        //retrieves the class name and sets that as the name to be passed during population
-        Intent intent = getIntent();
-        String name = intent.getStringExtra("Class");
         //populate the navigation menu and action bar with correct titles and item names
-        populateClassInfo(name);
+        populateClassInfo();
     }
 
     public boolean menuItemPressed(MenuItem item){
         //Repopulates parts of activity with the new class that was selected
         String title = item.getTitle().toString();
-        populateClassInfo(title);
+        courseName = title;
+        populateClassInfo();
 
         //closes the navigation menu after repopulating activity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.classInfo_drawerLayout);
         drawer.closeDrawer(GravityCompat.START);
+
+        //recreates all tabs after name changes have been made
+        viewPager.setAdapter(sectionPageAdapter);
         return true;
     }
 
@@ -93,10 +99,9 @@ public class ClassInfoActivity extends AppCompatActivity {
     }
 
     //fills in class info activity with information specific to activity
-    public void populateClassInfo(String name){
+    public void populateClassInfo(){
 
         //sets the title of the action bar to be the name of the class
-        courseName = name;
         getSupportActionBar().setTitle(courseName);
 
         //change header text
@@ -118,6 +123,4 @@ public class ClassInfoActivity extends AppCompatActivity {
             menuPos++;
         }
     }
-
-
 }

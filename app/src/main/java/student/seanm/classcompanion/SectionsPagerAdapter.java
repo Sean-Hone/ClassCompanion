@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import layout.ExtraInfoFragment;
+import layout.ProgressFragment;
 import layout.WeightingFragment;
 
 /**
@@ -19,7 +21,15 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter{
     @Override
     public Fragment getItem(int position){
         //returns the fragment realting to the current tab based on position
-        return WeightingFragment.newInstance();
+        switch (position){
+            case 0:
+                return WeightingFragment.newInstance();
+            case 1:
+                return ProgressFragment.newInstance();
+            case 2:
+                return ExtraInfoFragment.newInstance();
+        }
+        return null;
     }
 
     //only 3 tabs
