@@ -1,12 +1,17 @@
 package layout;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import student.seanm.classcompanion.ClassInfoActivity;
@@ -36,6 +41,25 @@ public class WeightingFragment extends Fragment {
         TextView mainText = (TextView) v.findViewById(R.id.frag_weigh_tv);
         mainText.setText("Weigthing for: " + ClassInfoActivity.courseName);
 
+        RelativeLayout relativeLayout = (RelativeLayout) v.findViewById(R.id.frag_weigh_draw);
+        relativeLayout.addView(new DrawView(getActivity()));
+
         return v;
+    }
+}
+
+class DrawView extends View{
+    private Paint paint;
+
+    public DrawView(Context c){
+        super(c);
+        paint = new Paint();
+    }
+
+    @Override
+    public void onDraw(Canvas canvas){
+        paint.setColor(Color.GREEN);
+        Rect rect = new Rect(20, 56, 200, 112);
+        canvas.drawRect(rect, paint );
     }
 }
