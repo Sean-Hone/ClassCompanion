@@ -31,6 +31,7 @@ public class ProgressFragment extends Fragment {
         //sets main content text based on the course name
         TextView mainText = (TextView) v.findViewById(R.id.frag_pro_tv);
         mainText.setText("Progress for: " + ClassInfoActivity.courseName);
+
         return v;
     }
 }

@@ -10,12 +10,17 @@
     android:orientation="vertical"
     tools:context="layout.WeightingFragment">
 
-    <RelativeLayout
+    <!--RelativeLayout
         android:id="@+id/frag_weigh_draw"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="#888888">
-    </RelativeLayout>
+        android:layout_height="350dp">
+    </RelativeLayout-->
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/frag_weigh_pie_chart"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+    </com.github.mikephil.charting.charts.PieChart>
 
     <TextView
         android:id="@+id/frag_weigh_tv"

@@ -26,6 +26,16 @@ public class ClassInfoActivity extends AppCompatActivity {
     private NavigationView navView;
     private Menu navMenu;
 
+    //hardcoded lists that mimic class information data
+    //will be user unique data in futre
+    public static String[] datClass =  {"COMP261", "COMP261", "COMP261", "NWEN241", "NWEN241",
+                                "SWEN221", "SWEN221", "SWEN221", "SWEN223", "SWEN223", "SWEN223"};
+
+    public static String[] datComponentType =  {"Assignments", "Test", "Exam", "Assignments", "Exam",
+                                        "Assignments", "Labs", "Exam", "Assignments", "Presentation", "Exams"};
+
+    public static int[] datComponentWeight =  {25, 20, 55, 30, 70, 25, 15, 60, 15, 15, 70};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
