@@ -1,11 +1,20 @@
 package layout;
 
+import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Point;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -45,16 +54,12 @@ public class WeightingFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_weighting, container, false);
 
-        //sets main content text based on the course name
-        TextView mainText = (TextView) v.findViewById(R.id.frag_weigh_tv);
-        mainText.setText("Weigthing for: " + ClassInfoActivity.courseName);
-
-        initialisePieChart(v);
+        initialisePieChartAndKeys(v);
 
         return v;
     }
 
-    private void initialisePieChart(View v){
+    private void initialisePieChartAndKeys(View v){
         //set up list to hold all weighting data
         weightSectors = new ArrayList<Integer>();
         List<Integer> weights = new ArrayList<Integer>();
@@ -119,6 +124,62 @@ public class WeightingFragment extends Fragment {
         dataSet.setValueFormatter(new PercentFormatter());
 
         weightsChart.setData(new PieData(dataSet));
+
+        initialiseKeysList(v, weights, components, colors);
+    }
+
+    private void initialiseKeysList(View v, List<Integer> weights, List<String> components, List<Integer> colors){
+
+        //sets up a grid layout to hold information on
+        GridLayout keysListLayout = (GridLayout) v.findViewById(R.id.frag_weigh_key_layout);
+        keysListLayout.setColumnCount(2);
+        keysListLayout.setRowCount(weights.size());
+        keysListLayout.setOrientation(GridLayout.HORIZONTAL);
+        keysListLayout.setBackgroundColor(Color.parseColor("#000000"));
+
+        for (int i = 0; i < weights.size(); i++) {
+
+            //finds the size of the screen to limit the length of the key
+            WindowManager wm = (WindowManager) this.getContext().getSystemService(Context.WINDOW_SERVICE);
+            Display display = wm.getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            int width = size.x;
+
+            //create text view for key
+            TextView key = new TextView(this.getContext());
+            key.setText(components.get(i));
+            key.setBackgroundColor(Color.parseColor("#fffafafa"));  //default whit backgrounbd
+            key.setTextSize(18);
+
+            //limits text to fit in grid element
+            key.setMaxWidth(width / 3);
+            key.setMaxLines(1);
+
+            //sets the paramaters of the key text
+            GridLayout.LayoutParams keyParams = new GridLayout.LayoutParams();
+            keyParams.columnSpec = GridLayout.spec(0, 2f);
+            keyParams.rowSpec = GridLayout.spec(i);
+            keyParams.setMargins(0, 0, 0, 1);
+            key.setLayoutParams(keyParams);
+
+            //creates text view for the percentage and centers text
+            TextView percentage = new TextView((this.getContext()));
+            percentage.setText("%" + weights.get(i));
+            percentage.setGravity(Gravity.CENTER);
+            percentage.setBackgroundColor(colors.get(i));
+            percentage.setTextSize(18);
+
+            //sets the paramaters for the percentage text view
+            GridLayout.LayoutParams percentageParams = new GridLayout.LayoutParams();
+            percentageParams.columnSpec = GridLayout.spec(1, 1f);
+            percentageParams.rowSpec = GridLayout.spec(i);
+            percentage.setLayoutParams(percentageParams);
+
+            //adds the two views to the grid layout
+            keysListLayout.addView(key);
+            keysListLayout.addView(percentage);
+        }
     }
 }
 

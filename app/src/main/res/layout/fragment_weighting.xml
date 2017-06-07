@@ -10,22 +10,43 @@
     android:orientation="vertical"
     tools:context="layout.WeightingFragment">
 
-    <!--RelativeLayout
-        android:id="@+id/frag_weigh_draw"
-        android:layout_width="match_parent"
-        android:layout_height="350dp">
-    </RelativeLayout-->
-
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/frag_weigh_pie_chart"
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="300dp"
+        android:layout_marginBottom="10dp">
     </com.github.mikephil.charting.charts.PieChart>
 
-    <TextView
-        android:id="@+id/frag_weigh_tv"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content">
 
+        <GridLayout
+            android:id="@+id/frag_weigh_key_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="1px">
+
+            <!--LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="Exams"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="%70"
+                    android:layout_gravity="center"/>
+            </LinearLayout-->
+        </GridLayout>
+    </ScrollView>
 
 </LinearLayout>
