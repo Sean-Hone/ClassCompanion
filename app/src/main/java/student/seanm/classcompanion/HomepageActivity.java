@@ -54,7 +54,6 @@ public class HomepageActivity extends AppCompatActivity {
         gridView.setOnItemClickListener(new OnItemClickListener(){
             public void onItemClick(AdapterView<?> parent, View v, int position, long id){
                 classIntent.putExtra("Course", (String)parent.getItemAtPosition(position));
-                Log.d("item", (String)parent.getItemAtPosition(position));
                 startActivity(classIntent);
             }
         });

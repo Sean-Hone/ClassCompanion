@@ -1,6 +1,7 @@
 package student.seanm.classcompanion;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
@@ -14,11 +15,19 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import student.seanm.classcompanion.data.CourseDataContract;
 import student.seanm.classcompanion.data.CourseDataDbHelper;
 import student.seanm.classcompanion.data.PopulateCourseDataDb;
 
@@ -87,7 +96,7 @@ public class ClassInfoActivity extends AppCompatActivity {
     public boolean menuItemPressed(MenuItem item){
         //Repopulates parts of activity with the new class that was selected
         String title = item.getTitle().toString();
-        courseName = title.toLowerCase();
+        courseName = title;
         populateClassInfo();
 
         //closes the navigation menu after repopulating activity
@@ -112,7 +121,17 @@ public class ClassInfoActivity extends AppCompatActivity {
 
     //fills in class info activity with information specific to activity
     public void populateClassInfo(){
+        List<String> courses = new ArrayList<String>();
+        Cursor cursor = getCourseNames();
 
+        while(true){
+            if(!cursor.moveToNext()) break;
+
+            if(!courses.contains(cursor.getString(0))){
+                courses.add(cursor.getString(0));
+            }
+
+        }
         //sets the title of the action bar to be the name of the class
         getSupportActionBar().setTitle(courseName);
 
@@ -121,18 +140,30 @@ public class ClassInfoActivity extends AppCompatActivity {
         TextView headerText = (TextView) header.findViewById(R.id.ci_navHead_name_tv);
         headerText.setText(courseName);
 
-        int menuPos = 1; //menu item number
-        String[] classes = this.getResources().getStringArray(R.array.classes); //array or class names
-        MenuItem menuItem; //reference to menu item being changed
+        //clears out the menu and creates a submenu to add items too
+        navMenu.clear();
+        SubMenu subMenu = navMenu.addSubMenu("Other Classes");
 
-        //4 will instead be number of courses
-        for(int i=0; i<4; i++){
-            if(courseName.equals(classes[i])) continue; //don't rename item if name is the current class
-            //gets the id for the nav item with of number i
-            int id = (getResources().getIdentifier("navItem" + menuPos, "id", this.getPackageName()));
-            menuItem = navMenu.findItem(id); //gets reference to menu item of given id
-            menuItem.setTitle(classes[i]); //changes title of menu item to be that of the next class
-            menuPos++;
+        for(int i=0; i<courses.size(); i++) {
+            //don't create item if this item is the current item
+            if(courseName.equals(courses.get(i))) continue;
+
+            subMenu.add(courses.get(i));
         }
+    }
+
+    //returns cursor of the course names column
+    private Cursor getCourseNames(){
+        String[] courseCols = new String[1];
+        courseCols[0] = CourseDataContract.CourseDataEntry.COLUMN_COURSE;
+
+        return courseDb.query(
+                CourseDataContract.CourseDataEntry.TABLE_NAME,
+                courseCols,
+                null,
+                null,
+                null,
+                null,
+                CourseDataContract.CourseDataEntry.COLUMN_COURSE);
     }
 }

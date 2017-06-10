@@ -115,6 +115,9 @@ public class WeightingFragment extends Fragment {
         dataSet.setValueTextSize(12);
         dataSet.setValueFormatter(new PercentFormatter());
 
+        //disables slice labels
+        //dataSet.setDrawValues(false);
+
         weightsChart.setData(new PieData(dataSet));
 
         initialiseKeysList(v, colors);
@@ -161,6 +164,7 @@ public class WeightingFragment extends Fragment {
             percentage.setGravity(Gravity.CENTER);
             percentage.setBackgroundColor(colors.get(i));
             percentage.setTextSize(18);
+            percentage.setTextColor(Color.parseColor("#000000"));
 
             //sets the paramaters for the percentage text view
             GridLayout.LayoutParams percentageParams = new GridLayout.LayoutParams();

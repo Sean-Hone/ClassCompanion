@@ -32,7 +32,6 @@ public class ClassItemAdapter extends BaseAdapter {
 
     //returns the amount of classes in the program
     public int getCount(){
-        //return itemNames.length;
         return courseNames.size();
     }
 
@@ -65,7 +64,6 @@ public class ClassItemAdapter extends BaseAdapter {
         }
         else itemView = (TextView) convertView;
 
-        //itemView.setText(itemNames[position]);
         itemView.setText(courseNames.get(position));
         return itemView;
     }
