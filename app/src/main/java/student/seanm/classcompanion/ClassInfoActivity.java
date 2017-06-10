@@ -43,7 +43,8 @@ public class ClassInfoActivity extends AppCompatActivity {
 
         //retrieves the class name and sets that as the name to be passed during population
         Intent intent = getIntent();
-        courseName = intent.getStringExtra("Class");
+        courseName = intent.getStringExtra("Course");
+        courseName = courseName.toUpperCase();
 
         Toolbar tBar = (Toolbar) findViewById(R.id.classInfo_toolBar);
         setSupportActionBar(tBar);
