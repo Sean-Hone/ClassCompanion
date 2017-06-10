@@ -1,6 +1,8 @@
 package student.seanm.classcompanion;
 
 import android.content.Intent;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -17,6 +19,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import student.seanm.classcompanion.data.CourseDataDbHelper;
+import student.seanm.classcompanion.data.PopulateCourseDataDb;
+
 //implements OnNavigationItemSelectedListener to put method
 public class ClassInfoActivity extends AppCompatActivity {
 
@@ -25,16 +30,7 @@ public class ClassInfoActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private NavigationView navView;
     private Menu navMenu;
-
-    //hardcoded lists that mimic class information data
-    //will be user unique data in futre
-    public static String[] datClass =  {"COMP261", "COMP261", "COMP261", "NWEN241", "NWEN241",
-                                "SWEN221", "SWEN221", "SWEN221", "SWEN223", "SWEN223", "SWEN223"};
-
-    public static String[] datComponentType =  {"Assignments", "Test", "Exam", "Assignments", "Exam",
-                                        "Assignments", "Labs", "Exam", "Assignments", "Presentation", "Exams"};
-
-    public static int[] datComponentWeight =  {25, 20, 55, 30, 70, 25, 15, 60, 15, 15, 70};
+    public static SQLiteDatabase courseDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +40,12 @@ public class ClassInfoActivity extends AppCompatActivity {
         //retrieves the class name and sets that as the name to be passed during population
         Intent intent = getIntent();
         courseName = intent.getStringExtra("Course");
-        courseName = courseName.toUpperCase();
+
+        //set up or check for courseData database
+        CourseDataDbHelper dbHelper = new CourseDataDbHelper(this);
+        courseDb = dbHelper.getWritableDatabase();
+        //method that will populate the  database with all of my mock grades for four subjects
+        PopulateCourseDataDb.populateCouseDataDb(courseDb);
 
         Toolbar tBar = (Toolbar) findViewById(R.id.classInfo_toolBar);
         setSupportActionBar(tBar);
@@ -86,7 +87,7 @@ public class ClassInfoActivity extends AppCompatActivity {
     public boolean menuItemPressed(MenuItem item){
         //Repopulates parts of activity with the new class that was selected
         String title = item.getTitle().toString();
-        courseName = title;
+        courseName = title.toLowerCase();
         populateClassInfo();
 
         //closes the navigation menu after repopulating activity

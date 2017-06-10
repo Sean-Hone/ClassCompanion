@@ -1,6 +1,7 @@
 package layout;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.GradientDrawable;
@@ -30,10 +31,13 @@ import java.util.List;
 
 import student.seanm.classcompanion.ClassInfoActivity;
 import student.seanm.classcompanion.R;
+import student.seanm.classcompanion.data.CourseDataContract;
 
 public class WeightingFragment extends Fragment {
 
-    private List<Integer> weightSectors;
+    private List<String> courseComponents;
+    private List<Integer> componentWeights;
+
     private PieChart weightsChart;
 
     public WeightingFragment() {
@@ -54,26 +58,14 @@ public class WeightingFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_weighting, container, false);
 
+        initialiseComponentInfo();
+
         initialisePieChartAndKeys(v);
 
         return v;
     }
 
     private void initialisePieChartAndKeys(View v){
-        //set up list to hold all weighting data
-        weightSectors = new ArrayList<Integer>();
-        List<Integer> weights = new ArrayList<Integer>();
-        List<String> components = new ArrayList<String>();
-        float totalWeight = 0;
-        for(int i=0; i<ClassInfoActivity.datClass.length; i++){
-            if(ClassInfoActivity.datClass[i].equals(ClassInfoActivity.courseName)){
-                weights.add(ClassInfoActivity.datComponentWeight[i]);
-                totalWeight += ClassInfoActivity.datComponentWeight[i];
-
-                components.add(ClassInfoActivity.datComponentType[i]);
-
-            }
-        }
 
         //set up reference to pie chart
         weightsChart = (PieChart) v.findViewById(R.id.frag_weigh_pie_chart);
@@ -96,8 +88,8 @@ public class WeightingFragment extends Fragment {
 
         //add data
         List<PieEntry> componentData = new ArrayList<PieEntry>();
-        for(int i=0; i<weights.size(); i++){
-            componentData.add(new PieEntry(weights.get(i),i));
+        for(int i=0; i<componentWeights.size(); i++){
+            componentData.add(new PieEntry(componentWeights.get(i),i));
         }
 
         //create dataset object
@@ -125,19 +117,19 @@ public class WeightingFragment extends Fragment {
 
         weightsChart.setData(new PieData(dataSet));
 
-        initialiseKeysList(v, weights, components, colors);
+        initialiseKeysList(v, colors);
     }
 
-    private void initialiseKeysList(View v, List<Integer> weights, List<String> components, List<Integer> colors){
+    private void initialiseKeysList(View v, List<Integer> colors){
 
         //sets up a grid layout to hold information on
         GridLayout keysListLayout = (GridLayout) v.findViewById(R.id.frag_weigh_key_layout);
         keysListLayout.setColumnCount(2);
-        keysListLayout.setRowCount(weights.size());
+        keysListLayout.setRowCount(componentWeights.size());
         keysListLayout.setOrientation(GridLayout.HORIZONTAL);
         keysListLayout.setBackgroundColor(Color.parseColor("#000000"));
 
-        for (int i = 0; i < weights.size(); i++) {
+        for (int i = 0; i < componentWeights.size(); i++) {
 
             //finds the size of the screen to limit the length of the key
             WindowManager wm = (WindowManager) this.getContext().getSystemService(Context.WINDOW_SERVICE);
@@ -148,7 +140,7 @@ public class WeightingFragment extends Fragment {
 
             //create text view for key
             TextView key = new TextView(this.getContext());
-            key.setText(components.get(i));
+            key.setText(courseComponents.get(i));
             key.setBackgroundColor(Color.parseColor("#fffafafa"));  //default whit backgrounbd
             key.setTextSize(18);
 
@@ -165,7 +157,7 @@ public class WeightingFragment extends Fragment {
 
             //creates text view for the percentage and centers text
             TextView percentage = new TextView((this.getContext()));
-            percentage.setText("%" + weights.get(i));
+            percentage.setText("%" + componentWeights.get(i));
             percentage.setGravity(Gravity.CENTER);
             percentage.setBackgroundColor(colors.get(i));
             percentage.setTextSize(18);
@@ -180,6 +172,45 @@ public class WeightingFragment extends Fragment {
             keysListLayout.addView(key);
             keysListLayout.addView(percentage);
         }
+    }
+
+    private void initialiseComponentInfo(){
+        Cursor pieInfoCursor = getPieInfoCursor();
+
+        courseComponents = new ArrayList<String>();
+        componentWeights = new ArrayList<Integer>();
+
+        while(true){
+            if(!pieInfoCursor.moveToNext()) return;
+
+            String component = pieInfoCursor.getString(pieInfoCursor.getColumnIndex(CourseDataContract.CourseDataEntry.COLUMN_COMPONENT));
+            Integer weight = pieInfoCursor.getInt(pieInfoCursor.getColumnIndex(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT));
+
+            if(!courseComponents.contains(component)){
+                courseComponents.add(component);
+                componentWeights.add(weight);
+            }
+            else{
+                Integer componentInd = courseComponents.indexOf(component);
+                componentWeights.set(componentInd, componentWeights.get(componentInd) + weight);
+            }
+        }
+    }
+
+    private Cursor getPieInfoCursor(){
+        String[] courseCols = new String[2];
+        courseCols[0] = CourseDataContract.CourseDataEntry.COLUMN_COMPONENT;
+        courseCols[1] = CourseDataContract.CourseDataEntry.COLUMN_WEIGHT;
+
+
+        return ClassInfoActivity.courseDb.query(
+                CourseDataContract.CourseDataEntry.TABLE_NAME,
+                courseCols,
+                CourseDataContract.CourseDataEntry.COLUMN_COURSE + "= '" + ClassInfoActivity.courseName + "'",
+                null,
+                null,
+                null,
+                CourseDataContract.CourseDataEntry.COLUMN_COURSE);
     }
 }
 

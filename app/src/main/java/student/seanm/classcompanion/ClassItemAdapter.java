@@ -70,6 +70,7 @@ public class ClassItemAdapter extends BaseAdapter {
         return itemView;
     }
 
+    //sets the list of unique course names that appear in the courseData database
     private void setCourseNames(){
 
         if(dbCursor.getCount()<=0) return;
