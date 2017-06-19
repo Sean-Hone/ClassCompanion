@@ -13,5 +13,6 @@ public class CourseDataContract {
         public static final String COLUMN_NUMBER = "number";
         public static final String COLUMN_WEIGHT = "weight";
         public static final String COLUMN_GRADE = "grade";
+        public static final String COLUMN_GOAL = "goal";
     }
 }

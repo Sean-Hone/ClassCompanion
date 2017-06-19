@@ -25,6 +25,7 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 1);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 6);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 80);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 90);
         list.add(cv);
 
         cv = new ContentValues();
@@ -33,6 +34,7 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 2);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 6);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 76);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 85);
         list.add(cv);
 
         cv = new ContentValues();
@@ -41,6 +43,7 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 3);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 6);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 85);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 85);
         list.add(cv);
 
         cv = new ContentValues();
@@ -49,6 +52,7 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 4);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 6);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 60);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 85);
         list.add(cv);
 
         cv = new ContentValues();
@@ -56,7 +60,8 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_COMPONENT, "Assignment");
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 5);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 6);
-        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, "");
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 90);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 85);
         list.add(cv);
 
         cv = new ContentValues();
@@ -65,6 +70,7 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 1);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 20);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 90);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 85);
         list.add(cv);
 
         cv = new ContentValues();
@@ -72,7 +78,8 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_COMPONENT, "Exam");
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 1);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 50);
-        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, "");
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, -1.0);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 85);
         list.add(cv);
 
         cv = new ContentValues();
@@ -81,6 +88,7 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 1);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 5);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 94);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 75);
         list.add(cv);
 
         cv = new ContentValues();
@@ -89,6 +97,7 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 2);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 5);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 100);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 75);
         list.add(cv);
 
         cv = new ContentValues();
@@ -97,6 +106,7 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 3);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 5);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 62);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 75);
         list.add(cv);
 
         cv = new ContentValues();
@@ -105,6 +115,7 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 4);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 5);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 100);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 75);
         list.add(cv);
 
         cv = new ContentValues();
@@ -112,7 +123,8 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_COMPONENT, "Assignment");
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 5);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 5);
-        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, "");
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 100);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 75);
         list.add(cv);
 
         cv = new ContentValues();
@@ -120,7 +132,8 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_COMPONENT, "Assignment");
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 6);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 5);
-        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, "");
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, -1.0);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 75);
         list.add(cv);
 
         cv = new ContentValues();
@@ -128,7 +141,8 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_COMPONENT, "Exam");
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 1);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 70);
-        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, "");
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, -1.0);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 75);
         list.add(cv);
 
         cv = new ContentValues();
@@ -137,6 +151,7 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 1);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 4);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 55);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 85);
         list.add(cv);
 
         cv = new ContentValues();
@@ -145,6 +160,7 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 2);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 4);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 99);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 85);
         list.add(cv);
 
         cv = new ContentValues();
@@ -153,6 +169,7 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 3);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 4);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 93);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 85);
         list.add(cv);
 
         cv = new ContentValues();
@@ -160,7 +177,8 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_COMPONENT, "Assignment");
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 4);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 4);
-        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, "");
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 76.5);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 85);
         list.add(cv);
 
         cv = new ContentValues();
@@ -168,7 +186,8 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_COMPONENT, "Assignment");
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 5);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 4);
-        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, "");
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, -1.0);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 85);
         list.add(cv);
 
         cv = new ContentValues();
@@ -176,7 +195,8 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_COMPONENT, "Lab");
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 1);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 15);
-        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 95);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 97.42);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 85);
         list.add(cv);
 
         cv = new ContentValues();
@@ -185,6 +205,7 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 1);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 5);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 100);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 85);
         list.add(cv);
 
         cv = new ContentValues();
@@ -192,7 +213,8 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_COMPONENT, "Exam");
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 1);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 60);
-        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, "");
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, -1.0);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 85);
         list.add(cv);
 
         cv = new ContentValues();
@@ -201,6 +223,7 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 1);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 3);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 93);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 80);
         list.add(cv);
 
         cv = new ContentValues();
@@ -209,6 +232,7 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 2);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 3);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 99);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 80);
         list.add(cv);
 
         cv = new ContentValues();
@@ -217,6 +241,7 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 3);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 3);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, 87);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 80);
         list.add(cv);
 
         cv = new ContentValues();
@@ -224,7 +249,8 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_COMPONENT, "Assignment");
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 4);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 3);
-        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, "");
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, -1.0);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 80);
         list.add(cv);
 
         cv = new ContentValues();
@@ -232,7 +258,8 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_COMPONENT, "Assignment");
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 5);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 3);
-        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, "");
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, -1.0);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 80);
         list.add(cv);
 
         cv = new ContentValues();
@@ -240,7 +267,8 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_COMPONENT, "Research Project");
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 1);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 15);
-        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, "");
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, -1.0);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 80);
         list.add(cv);
 
         cv = new ContentValues();
@@ -248,7 +276,8 @@ public class PopulateCourseDataDb {
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_COMPONENT, "Test");
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_NUMBER, 1);
         cv.put(CourseDataContract.CourseDataEntry.COLUMN_WEIGHT, 70);
-        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, "");
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GRADE, -1.0);
+        cv.put(CourseDataContract.CourseDataEntry.COLUMN_GOAL, 80);
         list.add(cv);
 
         //insert all courseData in one transaction
@@ -264,7 +293,6 @@ public class PopulateCourseDataDb {
             db.setTransactionSuccessful();
         }
         catch (SQLException e) {
-            //too bad :(
         }
         finally
         {

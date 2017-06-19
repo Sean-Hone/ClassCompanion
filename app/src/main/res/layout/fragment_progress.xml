@@ -1,4 +1,5 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,11 +8,90 @@
     android:paddingBottom="15dp"
     android:paddingRight="15dp"
     tools:context="layout.ProgressFragment"
-    android:id="@+id/frag_progress">
+    android:id="@+id/frag_progress"
+    android:orientation="vertical">
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/frag_pro_line_chart"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginBottom="10dp">
+    </com.github.mikephil.charting.charts.LineChart>
+
 
     <TextView
-        android:id="@+id/frag_pro_tv"
+        android:id="@+id/frag_pro_selected_tv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:padding="5dp"/>
 
-</FrameLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@color/colorPrimaryDark" />
+
+    <TextView
+        android:id="@+id/frag_pro_completed_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@color/colorPrimaryDark" />
+
+    <TextView
+        android:id="@+id/frag_pro_average_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@color/colorPrimaryDark" />
+
+    <TextView
+        android:id="@+id/frag_pro_goal_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"/>
+
+    <TextView
+        android:id="@+id/frag_pro_requirment_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"/>
+
+    <Button
+        android:id="@+id/frag_pro_update_but"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+
+
+
+</LinearLayout>

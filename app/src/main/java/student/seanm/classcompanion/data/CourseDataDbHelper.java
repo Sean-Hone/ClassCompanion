@@ -26,7 +26,8 @@ public class CourseDataDbHelper extends SQLiteOpenHelper {
                 CourseDataContract.CourseDataEntry.COLUMN_COMPONENT + " TEXT NOT NULL," +
                 CourseDataContract.CourseDataEntry.COLUMN_NUMBER + " INTEGER NOT NULL," +
                 CourseDataContract.CourseDataEntry.COLUMN_WEIGHT + " FLOAT NOT NULL," +
-                CourseDataContract.CourseDataEntry.COLUMN_GRADE + " FLOAT, PRIMARY KEY (" +
+                CourseDataContract.CourseDataEntry.COLUMN_GRADE + " FLOAT," +
+                CourseDataContract.CourseDataEntry.COLUMN_GOAL + " FLOAT, PRIMARY KEY (" +
                 CourseDataContract.CourseDataEntry.COLUMN_COURSE + ", " +
                 CourseDataContract.CourseDataEntry.COLUMN_COMPONENT + ", " +
                 CourseDataContract.CourseDataEntry.COLUMN_NUMBER + "));";
@@ -36,6 +37,7 @@ public class CourseDataDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1){
-        //eventaully will upgrade database version if database is changed
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + CourseDataContract.CourseDataEntry.TABLE_NAME);
+        onCreate(sqLiteDatabase);
     }
 }
